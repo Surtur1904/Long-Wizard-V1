@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bifd7vg665x0l"]
+
+[ext_resource type="Script" path="res://Duckling.gd" id="1_m6cyc"]
+[ext_resource type="Texture2D" uid="uid://c3n8tb4nox074" path="res://Graphics/Duckling.png" id="1_waggk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ngxw"]
+atlas = ExtResource("1_waggk")
+region = Rect2(0, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ktst"]
+atlas = ExtResource("1_waggk")
+region = Rect2(23, 0, 23, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_di5ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ngxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ktst")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwbla"]
+size = Vector2(19, 13)
+
+[node name="Area2D" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_m6cyc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_di5ml")
+autoplay = "default"
+frame_progress = 0.33315
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_pwbla")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

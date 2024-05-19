@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7eiumtg13fg"]
+[gd_scene load_steps=11 format=3 uid="uid://c7eiumtg13fg"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q4ubj"]
 [ext_resource type="Script" path="res://Game_Manager.gd" id="2_yar6m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://irnv6oi7onvg" path="res://Scenes/Donnie.tscn" id="5_ostfm"]
 [ext_resource type="PackedScene" uid="uid://ibsec8x0wy6r" path="res://Scenes/collectable.tscn" id="6_rq0ds"]
 [ext_resource type="PackedScene" uid="uid://bifd7vg665x0l" path="res://Scenes/Duckling.tscn" id="7_kqcaq"]
+[ext_resource type="PackedScene" uid="uid://y8k1uty7ksuy" path="res://Scenes/ladder.tscn" id="8_0rumy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmprn"]
 texture = ExtResource("4_ypxar")
@@ -619,6 +620,9 @@ position = Vector2(1353, 613)
 
 [node name="Duckling" parent="Graphics" instance=ExtResource("7_kqcaq")]
 position = Vector2(657, 476)
+
+[node name="Ladder" parent="Graphics" instance=ExtResource("8_0rumy")]
+position = Vector2(1918, 916)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

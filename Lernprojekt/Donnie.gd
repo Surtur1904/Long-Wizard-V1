@@ -43,9 +43,17 @@ func _physics_process(delta):
 			velocity.x = 1000
 
 	move_and_slide()
-	
+	print(on_ladder)
 	#Change Direction
 	var isLeft = velocity.x < 0
 	sprite_2d.flip_h = isLeft
 	# Ladder Detection
 	
+func _on_ladder_body_entered(body: Node2D) -> void:
+	if "CharacterBody2D" in body.name:
+		on_ladder = true
+
+
+func _on_ladder_body_exited(body: Node2D) -> void:
+	if "CharacterBody2D" in body.name:
+		on_ladder = false

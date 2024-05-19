@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -700.0
 @onready var sprite_2d = $Sprite2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var on_ladder:bool = false
 
 
 func _physics_process(delta):
@@ -16,9 +17,16 @@ func _physics_process(delta):
 		sprite_2d.animation = "Idle"
 	# Add the gravity.
 	
-	if not is_on_floor():
+	if not is_on_floor() and !on_ladder:
 		velocity.y += gravity * delta
-
+	# check for ladder climb: 
+		if on_ladder:
+				if Input.is_action_pressed("down"):
+					velocity.y = SPEED*delta*200
+				elif Input.is_action_just_pressed("up"):
+					velocity.y = -SPEED*delta*200
+				else:
+					velocity.y = 0
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -39,3 +47,5 @@ func _physics_process(delta):
 	#Change Direction
 	var isLeft = velocity.x < 0
 	sprite_2d.flip_h = isLeft
+	# Ladder Detection
+	

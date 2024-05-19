@@ -9,6 +9,7 @@ size = Vector2(43.5, 127.5)
 position = Vector2(983, 818)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(56, 16.75)
 scale = Vector2(2.33333, 3.35227)
 texture = ExtResource("1_etgik")
